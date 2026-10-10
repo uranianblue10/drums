@@ -207,6 +207,7 @@ function dbg(m){try{console.log('[loopz] '+m);}catch(e){}try{if(window.__TAURI__
 /* iOS Safari decodes neither Ogg Opus (Web Audio) nor <audio> opus: the
    pre-transcoded MP3 at mp3/<file> is the fallback (and first choice). */
 const IS_IOS=/iPad|iPhone|iPod/.test(navigator.userAgent||'')||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+const FORCE_IOS=/[?&]ios=1/.test(location.search); // localhost/desktop test of the iOS path
 function canPlayOpus(){try{const a=document.createElement('audio');const v=a.canPlayType('audio/ogg; codecs=opus');return v==='probably'||v==='maybe';}catch(e){return false;}}
 function mp3For(file){return file.replace(/^loops\//,'mp3/loops/').replace(/\.opus$/,'.mp3');}
 const NATIVE_AUDIO=!!(window.__TAURI__&&window.__TAURI__.core);
@@ -335,7 +336,36 @@ document.getElementById('temporeset').onclick=()=>{document.getElementById('temp
    entirely and play the MP3 with a direct src, calling play() synchronously
    (no await runs before it). Note iOS ignores the volume slider (use the
    side buttons) and the silent switch mutes web audio. */
-function playIos(l,my){
+/* iOS loop strategy: Web Audio loop of the decoded MP3 for gapless repeats.
+   The AudioContext unlock (ctx()) still runs synchronously inside the tap
+   gesture; only fetch/decode happens after. If the context won't run, fall
+   back to instant <audio> (audible, but with a small repeat gap). */
+async function playIos(l,my){
+  engine='web';
+  try{ctx();}catch(e){dbg('ios ctx create threw '+e);}
+  stopSource();if(htmlEl){try{htmlEl.pause();}catch(e){}}stopMetro();
+  current=l.file;currentLoop=l;lastLoop=l;baseBpm=l.bpm||null;
+  now.textContent='LOADING '+l.name+' ...';
+  document.body.classList.add('playing-anim');syncStopBtn();render();
+  try{
+    const raw=await getBuffer(mp3For(l.file));
+    if(my!==playToken)return;
+    const ac=ctx();
+    if(ac.state!=='running'){dbg('ios ctx '+ac.state+', direct fallback');playIosDirect(l,my);return;}
+    const buf=trimLoop(raw,l.duration);
+    const src=ac.createBufferSource();
+    src.buffer=buf;src.loop=true;
+    src.playbackRate.value=parseInt(document.getElementById('tempo').value)/100;
+    src.connect(gainNode);
+    srcNode=src;src.start();
+    applyTempo();syncStopBtn();
+    now.textContent=l.name;
+    dbg('ios gapless loop '+l.file+' len='+buf.duration.toFixed(3)+'s');
+  }catch(e){if(my!==playToken)return;dbg('ios web failed '+e);playIosDirect(l,my);}
+}
+/* Instant <audio> start: no await runs before play(), so it works even when
+   the AudioContext is blocked. Repeats have a small gap (no trim). */
+function playIosDirect(l,my){
   engine='html';stopSource();
   if(!htmlEl){htmlEl=new Audio();htmlEl.loop=true;htmlEl.preload='auto';htmlEl.playsInline=true;
     htmlEl.onerror=()=>{dbg('html audio ERROR file='+(htmlEl.dataset.f||'?')+' code='+(htmlEl.error&&htmlEl.error.code));if(my===playToken)now.textContent='Could not play '+l.name+' - try again';};
@@ -351,6 +381,22 @@ function playIos(l,my){
   applyTempo();
   now.textContent=l.name;syncStopBtn();
   dbg('ios direct play '+l.file);
+}
+/* Cut MP3 encoder delay/padding by energy: find the first audible sample
+   (works whether or not the browser applies the LAME gapless tag), then keep
+   exactly the musical duration from loops.json. */
+function trimLoop(buf,duration){
+  const sr=buf.sampleRate, ch0=buf.getChannelData(0);
+  let start=0;
+  const win=Math.min(Math.floor(sr*0.25),ch0.length);
+  for(let i=0;i<win;i++){if(Math.abs(ch0[i])>0.001){start=Math.max(0,i-64);break;}}
+  let len=buf.length-start;
+  if(duration&&duration>0)len=Math.min(len,Math.round(duration*sr));
+  if(len<=0)return buf;
+  const out=actx.createBuffer(buf.numberOfChannels,len,sr);
+  for(let ch=0;ch<buf.numberOfChannels;ch++){out.copyToChannel(buf.getChannelData(ch).subarray(start,start+len),ch);}
+  dbg('trimLoop start='+start+' len='+len+' ('+(len/sr).toFixed(3)+'s)');
+  return out;
 }
 async function playHtml(l,my){
   engine='html';stopSource();
@@ -395,7 +441,7 @@ async function play(l){
   now.textContent='LOADING '+l.name+' ...';
   document.body.classList.add('playing-anim');syncStopBtn();render();
   dbg('play '+l.file+' engine='+engine);
-  if(IS_IOS){playIos(l,my);return;}
+  if(IS_IOS||FORCE_IOS){playIos(l,my);return;}
   try{
     let buf=await getBuffer(l.file);
     if(my!==playToken)return;
