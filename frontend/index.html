@@ -184,7 +184,11 @@ async function loadFavs(){
   let server=[];
   try{
     if(NATIVE_AUDIO){server=await ninvoke('fav_list');}
-    else{const r=await fetch('api/favorites');if(!r.ok)throw new Error('http '+r.status);server=await r.json();}
+    else{
+      let ok=false;
+      try{const r=await fetch('api/favorites');if(r.ok){server=await r.json();ok=true;}}catch(e){}
+      if(!ok&&JSONBIN_ON)server=await jbLoad();
+    }
   }catch(e){dbg('fav load failed '+e);}
   let cached=[];try{cached=JSON.parse(localStorage.getItem('loopz_favs')||'[]');}catch(e){}
   favs=new Set([...server,...cached]);
@@ -194,7 +198,11 @@ async function loadFavs(){
 async function persistFav(file,on){
   try{
     if(NATIVE_AUDIO){await ninvoke('fav_set',{file,fav:on});}
-    else{const r=await fetch('api/favorites',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({file,fav:on})});if(!r.ok)throw new Error('http '+r.status);}
+    else{
+      let ok=false;
+      try{const r=await fetch('api/favorites',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({file,fav:on})});ok=r.ok;}catch(e){}
+      if(!ok&&JSONBIN_ON)jbSave();
+    }
   }catch(e){dbg('fav persist failed '+e);}
   favCache();
 }
@@ -212,6 +220,33 @@ function canPlayOpus(){try{const a=document.createElement('audio');const v=a.can
 function mp3For(file){return file.replace(/^loops\//,'mp3/loops/').replace(/\.opus$/,'.mp3');}
 const NATIVE_AUDIO=!!(window.__TAURI__&&window.__TAURI__.core);
 function ninvoke(cmd,args){return window.__TAURI__.core.invoke(cmd,args||{}).catch(e=>{dbg('invoke '+cmd+' failed '+e);throw e;});}
+/* Web favorites live in one shared private JSONBin bin (localStorage stays as
+   offline cache). The access key below is scoped read+update and ships in
+   public code by design; the LAN-server api (desktop+phone) takes precedence
+   when the page is served by the app itself. */
+const JSONBIN_KEY='$2a$10$ePvC4Axhri9QtBZg4pwE2ucNLP7IicbFRX6JGjG2W8LzDMmwkDAtW';
+const JSONBIN_BIN='6aca7d98ac6210605a25ffbc';
+const JSONBIN_ON=!NATIVE_AUDIO&&JSONBIN_KEY&&JSONBIN_BIN;
+let jbTimer=null;
+async function jbLoad(){
+  const r=await fetch('https://api.jsonbin.io/v3/b/'+JSONBIN_BIN+'/latest',{headers:{'X-Access-Key':JSONBIN_KEY}});
+  if(!r.ok)throw new Error('http '+r.status);
+  const j=await r.json();
+  const rec=j.record;
+  const arr=rec?(rec.favs||rec):[];
+  if(!Array.isArray(arr))throw new Error('bad bin shape');
+  return arr.filter(f=>typeof f==='string');
+}
+function jbSave(){
+  clearTimeout(jbTimer);
+  jbTimer=setTimeout(async()=>{
+    try{
+      const r=await fetch('https://api.jsonbin.io/v3/b/'+JSONBIN_BIN,{method:'PUT',headers:{'Content-Type':'application/json','X-Access-Key':JSONBIN_KEY},body:JSON.stringify({favs:[...favs]})});
+      if(!r.ok)throw new Error('http '+r.status);
+      dbg('jsonbin saved '+favs.size+' favorites');
+    }catch(e){dbg('jsonbin save failed '+e);}
+  },800);
+}
 loadFavs();
 async function nativePlay(l,my){
   current=l.file;currentLoop=l;lastLoop=l;baseBpm=l.bpm||null;
