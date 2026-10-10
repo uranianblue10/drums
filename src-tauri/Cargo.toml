@@ -2,7 +2,7 @@
 name = "loopz"
 version = "1.0.0"
 description = "Loopz Drum Loops for Linux"
-authors = ["Abhishek"]
+authors = ["uranianblue10"]
 edition = "2021"
 rust-version = "1.77"
 
