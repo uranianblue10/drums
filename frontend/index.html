@@ -330,10 +330,32 @@ function applyTempo(){
 document.getElementById('tempo').oninput=()=>{applyTempo();
   if(NATIVE_AUDIO&&current){ninvoke('audio_set_tempo',{tempoPct:parseInt(document.getElementById('tempo').value)});}};
 document.getElementById('temporeset').onclick=()=>{document.getElementById('tempo').value=100;applyTempo();};
+/* iOS Safari only allows audio started inside the tap gesture: any awaited
+   fetch/decode before play() gets blocked. So on iOS we skip Web Audio
+   entirely and play the MP3 with a direct src, calling play() synchronously
+   (no await runs before it). Note iOS ignores the volume slider (use the
+   side buttons) and the silent switch mutes web audio. */
+function playIos(l,my){
+  engine='html';stopSource();
+  if(!htmlEl){htmlEl=new Audio();htmlEl.loop=true;htmlEl.preload='auto';htmlEl.playsInline=true;
+    htmlEl.onerror=()=>{dbg('html audio ERROR file='+(htmlEl.dataset.f||'?')+' code='+(htmlEl.error&&htmlEl.error.code));if(my===playToken)now.textContent='Could not play '+l.name+' - try again';};
+    htmlEl.onplaying=()=>{dbg('html audio playing '+(htmlEl.dataset.f||''));};}
+  if(htmlEl.dataset.u){try{URL.revokeObjectURL(htmlEl.dataset.u);}catch(e){}htmlEl.dataset.u='';}
+  htmlEl.dataset.f=l.file;
+  htmlEl.src=mp3For(l.file);
+  try{htmlEl.preservesPitch=true;}catch(e){}
+  try{htmlEl.playbackRate=parseInt(document.getElementById('tempo').value)/100;}catch(e){}
+  try{htmlEl.volume=document.getElementById('vol').value/100;}catch(e){}
+  const p=htmlEl.play();
+  if(p&&p.catch)p.catch(e=>{dbg('ios play rejected '+e);if(my===playToken)now.textContent='Could not play '+l.name+' - try again';});
+  applyTempo();
+  now.textContent=l.name;syncStopBtn();
+  dbg('ios direct play '+l.file);
+}
 async function playHtml(l,my){
   engine='html';stopSource();
   dbg('fallback to <audio> for '+l.file);
-  if(!htmlEl){htmlEl=new Audio();htmlEl.loop=true;htmlEl.preload='auto';
+  if(!htmlEl){htmlEl=new Audio();htmlEl.loop=true;htmlEl.preload='auto';htmlEl.playsInline=true;
     htmlEl.onerror=()=>{dbg('html audio ERROR file='+(htmlEl.dataset.f||'?')+' code='+(htmlEl.error&&htmlEl.error.code));};
     htmlEl.onplaying=()=>{dbg('html audio playing '+(htmlEl.dataset.f||''));};}
   const urls=(IS_IOS||!canPlayOpus())?[mp3For(l.file),l.file]:[l.file,mp3For(l.file)];
@@ -373,6 +395,7 @@ async function play(l){
   now.textContent='LOADING '+l.name+' ...';
   document.body.classList.add('playing-anim');syncStopBtn();render();
   dbg('play '+l.file+' engine='+engine);
+  if(IS_IOS){playIos(l,my);return;}
   try{
     let buf=await getBuffer(l.file);
     if(my!==playToken)return;
