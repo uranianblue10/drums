@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Loopz">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0e0d12">
+<link rel="icon" type="image/png" href="icon-512.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<title>Loopz — Drum Loops for Linux</title>
+<style>
+:root{
+  --bg:#0e0d12; --bg2:#14121a;
+  --panel:#1a1722; --panel2:#211d2c; --panel3:#282336;
+  --line:#2e2940; --line2:#3b3452;
+  --text:#f4f0fa; --muted:#a79fb8; --faint:#6f6884;
+  --accent:#ff4d5e; --accent-d:#c9243c;
+  --accent-grad:linear-gradient(135deg,#ff4d5e,#ff8a3d);
+  --gold:#ffc53d;
+  --ok:#3ddc84;
+  --radius:14px; --radius-s:10px;
+  --shadow:0 10px 30px rgba(0,0,0,.45);
+  --font:system-ui,-apple-system,"Segoe UI",Ubuntu,Cantarell,sans-serif;
+}
+*{box-sizing:border-box}
+html{scrollbar-color:var(--line2) var(--bg);touch-action:pan-x pan-y}
+body{margin:0;overflow:hidden;background:radial-gradient(1200px 500px at 80% -10%,rgba(255,77,94,.12),transparent 60%),radial-gradient(900px 500px at 10% 0%,rgba(255,138,61,.08),transparent 55%),var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;padding-bottom:120px}
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:20;background:rgba(14,13,18,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.brandbar{max-width:1200px;margin:0 auto;padding:16px 20px 6px;display:flex;align-items:center;gap:14px}
+.logo{width:42px;height:42px;border-radius:12px;background:var(--accent-grad);display:grid;place-items:center;font-size:20px;box-shadow:0 6px 18px rgba(255,77,94,.4);flex:none}
+.title h1{margin:0;font-size:20px;letter-spacing:.3px}
+.title p{margin:2px 0 0;color:var(--muted);font-size:12.5px}
+.search{flex:1;min-width:200px;display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:0 14px;transition:border-color .15s, box-shadow .15s}
+.search:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,77,94,.18)}
+.search .ico{color:var(--faint);font-size:15px}
+.search input{flex:1;background:none;border:none;outline:none;color:var(--text);font-size:14px;padding:11px 0;font-family:inherit}
+.search input::placeholder{color:var(--faint)}
+select{appearance:none;-webkit-appearance:none;background:var(--panel) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6"><path d="M1 1l4 4 4-4" stroke="%23a79fb8" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>') no-repeat right 12px center;border:1px solid var(--line);color:var(--text);border-radius:999px;padding:11px 32px 11px 14px;font-size:13.5px;font-family:inherit;cursor:pointer;transition:border-color .15s}
+select:hover{border-color:var(--line2)}
+select:focus{outline:none;border-color:var(--accent)}
+.btn{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:999px;padding:10px 16px;font-size:13.5px;font-weight:600;font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:transform .08s, border-color .15s, background .15s}
+.btn:hover{border-color:var(--line2);background:var(--panel2)}
+.btn:active{transform:scale(.97)}
+.btn.active{background:rgba(255,197,61,.14);border-color:var(--gold);color:var(--gold)}
+.btn.primary{background:var(--accent-grad);border:none;color:#fff;box-shadow:0 6px 16px rgba(255,77,94,.35)}
+.btn.primary:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent}
+/* ---------- count ---------- */
+.countwrap{max-width:1200px;margin:0 auto;padding:12px 20px 0;color:var(--muted);font-size:12.5px;display:flex;gap:8px;align-items:center}
+/* ---------- grid/cards ---------- */
+#grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;padding:12px 20px 20px}
+.card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--radius);padding:14px;cursor:pointer;position:relative;transition:transform .12s, border-color .15s, box-shadow .15s;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:transparent;transition:background .15s}
+.card:hover{transform:translateY(-2px);border-color:var(--line2);box-shadow:var(--shadow)}
+.card.playing{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),var(--shadow)}
+.card.playing::before{background:var(--accent-grad)}
+.card .top{display:flex;gap:12px;align-items:center}
+.thumb{width:46px;height:46px;flex:none;border-radius:12px;background:linear-gradient(135deg,#3a2b4d,#221c33);border:1px solid var(--line2);display:grid;place-items:center;font-size:17px;color:#cfc6e4;transition:all .15s}
+.card:hover .thumb{background:linear-gradient(135deg,#4a3358,#2a2140)}
+.card.playing .thumb{background:var(--accent-grad);border-color:transparent;color:#fff}
+.card .name{font-weight:700;font-size:14.5px;margin:0;line-height:1.3}
+.card .sub{color:var(--muted);font-size:12px;margin-top:2px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.chip{font-size:11px;font-weight:700;letter-spacing:.3px;background:rgba(255,255,255,.06);border:1px solid var(--line);color:#d7cfee;border-radius:999px;padding:3px 9px}
+.chip.sig{background:rgba(255,77,94,.13);border-color:rgba(255,77,94,.45);color:#ff9aa5}
+.chip.bpm{background:rgba(61,220,132,.1);border-color:rgba(61,220,132,.35);color:#7fe6a8}
+.fav{position:absolute;top:10px;right:10px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--faint);font-size:15px;cursor:pointer;display:grid;place-items:center;transition:all .15s;padding:0}
+.fav:hover{color:var(--gold);border-color:var(--gold);transform:scale(1.08)}
+.fav.on{background:rgba(255,197,61,.16);border-color:var(--gold);color:var(--gold)}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:50px 10px;font-size:14px}
+/* ---------- player bar ---------- */
+#playerbar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(20,18,26,.92);backdrop-filter:blur(16px);border-top:1px solid var(--line2);padding-bottom:env(safe-area-inset-bottom,0px)}
+.pb-inner{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.track{display:flex;gap:12px;align-items:center;min-width:220px;flex:1}
+#eqx{display:flex;gap:3px;align-items:flex-end;height:24px;width:26px;flex:none}
+#eq i{width:4px;background:var(--line2);height:5px;border-radius:2px;transition:background .2s}
+.playing-anim #eq i{background:var(--accent);animation:eq .7s infinite ease-in-out alternate}
+.playing-anim #eq i:nth-child(2){animation-delay:.15s}.playing-anim #eq i:nth-child(3){animation-delay:.3s}.playing-anim #eq i:nth-child(4){animation-delay:.45s}
+@keyframes eq{from{height:5px}to{height:24px}}
+#now{font-weight:700;font-size:14px}
+#effbpm{font-size:12px;color:var(--muted);margin-top:2px}
+.ctl{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.slider-group{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px 14px}
+.slider-group .lab{font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--muted)}
+.slider-group .val{font-size:12.5px;font-weight:700;min-width:44px;text-align:right;color:var(--text);font-variant-numeric:tabular-nums}
+input[type=range]{-webkit-appearance:none;appearance:none;width:130px;height:22px;background:transparent;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:999px;background:var(--fill,#3b3452)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:-5px;border-radius:50%;background:#fff;border:3px solid var(--accent);box-shadow:0 2px 8px rgba(255,77,94,.5);transition:transform .1s}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15)}
+input[type=range]::-moz-range-track{height:6px;border-radius:999px;background:#3b3452}
+input[type=range]::-moz-range-progress{height:6px;border-radius:999px;background:var(--accent)}
+input[type=range]::-moz-range-thumb{width:10px;height:10px;border-radius:50%;background:#fff;border:3px solid var(--accent)}
+input[type=range]:focus{outline:none}
+/* switch */
+.switch{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;user-select:none}
+.switch .lab{font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--muted)}
+.switch input{display:none}
+.sw{width:36px;height:20px;border-radius:999px;background:#3b3452;position:relative;transition:background .15s;flex:none}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .15s}
+.switch input:checked + .sw{background:var(--accent)}
+.switch input:checked + .sw::after{left:18px}
+.stopbtn{width:44px;height:44px;border-radius:50%;font-size:17px;padding:0;justify-content:center}
+@media(max-width:640px){.pb-inner{gap:12px}.track{min-width:100%;cursor:pointer}input[type=range]{width:100px}
+  #pbcaret{display:inline-block;margin-left:auto;color:var(--faint);font-size:13px;transition:transform .2s;flex:none}
+  #playerbar .ctl{display:none;width:100%}
+  #playerbar.expanded .ctl{display:flex}
+  #playerbar.expanded #pbcaret{transform:rotate(180deg);color:var(--accent)}}
+#pbcaret{display:none}
+button:focus-visible,.card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#hamburger{display:none}
+#serverurl{word-break:break-all}
+.shell{display:flex;align-items:stretch;max-width:1200px;margin:0 auto;height:100vh}
+.content{flex:1;min-width:0;height:100vh;overflow-y:auto;padding-bottom:130px}
+#sidebar{width:252px;flex:none;height:100vh;overflow-y:auto;background:var(--bg2);border-right:1px solid var(--line);padding:18px 14px 140px;display:flex;flex-direction:column;gap:18px}
+.sblock h3{margin:0 0 10px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.fbtns{display:flex;flex-wrap:wrap;gap:8px}
+.fbtn{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:all .12s}
+.fbtn:hover{border-color:var(--line2)}
+.fbtn.active{background:var(--accent-grad);border:none;color:#fff;box-shadow:0 4px 12px rgba(255,77,94,.35)}
+.fbtn.star.active{background:rgba(255,197,61,.14);border:1px solid var(--gold);color:var(--gold);box-shadow:none}
+#sidebar .search{min-width:0}
+#scrim{display:none}
+@media(max-width:820px){
+  body{overflow:auto}
+  .shell{display:block;height:auto}
+  .content{height:auto;overflow:visible}
+  #hamburger{display:inline-flex}
+  #scrim{display:block;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:25;opacity:0;pointer-events:none;transition:opacity .2s}
+  body.sbopen #scrim{opacity:1;pointer-events:auto}
+  #sidebar{position:fixed;top:0;left:0;bottom:0;height:auto;width:min(300px,86vw);z-index:26;transform:translateX(-102%);transition:transform .22s ease;box-shadow:4px 0 18px rgba(0,0,0,.5);padding-top:calc(18px + env(safe-area-inset-top,0px))}
+  body.sbopen #sidebar{transform:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brandbar">
+    <button id="hamburger" class="btn ghost" aria-label="Filters">☰</button>
+    <div class="logo">🥁</div>
+    <div class="title"><h1>Loopz</h1></div>
+  </div>
+</header>
+<div class="shell">
+<div id="scrim"></div>
+<aside id="sidebar" aria-label="Filters">
+  <div class="sblock"><h3>Search</h3>
+    <label class="search"><span class="ico">⌕</span><input id="q" type="search" placeholder="Shuffle, salsa, blast…"></label></div>
+  <div class="sblock"><h3>Genre</h3><div class="fbtns" id="gbtns"></div></div>
+  <div class="sblock"><h3>Meter</h3><div class="fbtns" id="mbtns"></div></div>
+  <div class="sblock"><h3>Library</h3><div class="fbtns"><button id="favonly" class="btn">★ Favorites</button></div></div>
+  <div class="sblock" id="serverblock" style="display:none"><h3>Server</h3><div class="fbtns">
+    <button id="serverbtn" class="btn primary" style="width:100%;justify-content:center" title="Start LAN server">Start Server</button></div>
+    <div style="margin-top:8px"><span id="serverurl" class="chip" style="display:none"></span></div></div>
+</aside>
+<div class="content">
+<div class="countwrap"><span id="count"></span></div>
+<main id="grid"></main>
+</div>
+</div>
+<div id="playerbar">
+  <div class="pb-inner">
+    <div class="track" id="trackrow" role="button" aria-label="Expand player controls" aria-expanded="false">
+      <button id="stop" class="btn primary stopbtn" title="Play / stop">▶</button>
+      <div><div id="now"></div><div id="effbpm"></div></div>
+      <span id="pbcaret" aria-hidden="true">▲</span>
+    </div>
+    <div class="ctl">
+      <div class="slider-group"><span class="lab">Tempo</span><input id="tempo" type="range" min="50" max="150" value="100" aria-label="Loop tempo percent"><span class="val" id="tempoval">100%</span><button id="temporeset" class="btn ghost" title="Reset tempo to 100%" style="padding:6px 10px">1×</button></div>
+      <div class="slider-group"><span class="lab">Vol</span><input id="vol" type="range" min="0" max="100" value="80" aria-label="Volume"><span class="val" id="volval">80</span></div>
+    </div>
+  </div>
+</div>
+<script>
+let loops=[], favs=new Set();
+function favCache(){try{localStorage.setItem('loopz_favs',JSON.stringify([...favs]));}catch(e){}}
+/* Favorites live on the desktop (same set for desktop + phone, persisted to
+   disk). The server is the source of truth; localStorage is only an offline
+   cache, merged on load so pre-existing local stars are uploaded, not lost. */
+async function loadFavs(){
+  let server=[];
+  try{
+    if(NATIVE_AUDIO){server=await ninvoke('fav_list');}
+    else{const r=await fetch('api/favorites');if(!r.ok)throw new Error('http '+r.status);server=await r.json();}
+  }catch(e){dbg('fav load failed '+e);}
+  let cached=[];try{cached=JSON.parse(localStorage.getItem('loopz_favs')||'[]');}catch(e){}
+  favs=new Set([...server,...cached]);
+  favCache();render();
+  for(const f of cached){if(!server.includes(f))persistFav(f,true);}
+}
+async function persistFav(file,on){
+  try{
+    if(NATIVE_AUDIO){await ninvoke('fav_set',{file,fav:on});}
+    else{const r=await fetch('api/favorites',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({file,fav:on})});if(!r.ok)throw new Error('http '+r.status);}
+  }catch(e){dbg('fav persist failed '+e);}
+  favCache();
+}
+const grid=document.getElementById('grid');
+const now=document.getElementById('now'), q=document.getElementById('q');
+let fGenre='', fMeter='';
+const favOnly=document.getElementById('favonly');
+let current=null, currentLoop=null, lastLoop=null, metroTimer=null;
+function dbg(m){try{console.log('[loopz] '+m);}catch(e){}try{if(window.__TAURI__&&window.__TAURI__.core){window.__TAURI__.core.invoke('debug_log',{msg:String(m)});}}catch(e){}}
+/* iOS Safari decodes neither Ogg Opus (Web Audio) nor <audio> opus: the LAN
+   server transcoded WAV at wav/<file> is the fallback (and first choice). */
+const IS_IOS=/iPad|iPhone|iPod/.test(navigator.userAgent||'')||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+function canPlayOpus(){try{const a=document.createElement('audio');const v=a.canPlayType('audio/ogg; codecs=opus');return v==='probably'||v==='maybe';}catch(e){return false;}}
+function wavFor(file){return 'wav/'+file;}
+const NATIVE_AUDIO=!!(window.__TAURI__&&window.__TAURI__.core);
+function ninvoke(cmd,args){return window.__TAURI__.core.invoke(cmd,args||{}).catch(e=>{dbg('invoke '+cmd+' failed '+e);throw e;});}
+loadFavs();
+async function nativePlay(l,my){
+  current=l.file;currentLoop=l;lastLoop=l;baseBpm=l.bpm||null;
+  now.textContent='LOADING '+l.name+' ...';document.body.classList.add('playing-anim');syncStopBtn();render();
+  try{
+    await ninvoke('audio_play',{file:l.file,
+      tempoPct:parseInt(document.getElementById('tempo').value),
+      volume:parseInt(document.getElementById('vol').value)/100,
+      metro:false,
+      metroBpm:100,
+      durationMs:Math.round((l.duration||0)*1000)});
+    if(my!==playToken)return;
+    applyTempo();
+    dbg('native playing '+l.file);
+    now.textContent=l.name;
+  }catch(e){if(my!==playToken)return;
+    current=null;currentLoop=null;document.body.classList.remove('playing-anim');
+    now.textContent='Audio error: '+e;render();}}
+dbg('boot tauri='+(window.__TAURI__?'yes':'no')+' ua='+navigator.userAgent);
+/* Primary: gapless Web Audio loop. Fallback: plain <audio> if WebAudio stays blocked. */
+let htmlEl=null, engine='web';
+let actx=null, srcNode=null, gainNode=null, playToken=0;
+const bufCache=new Map();
+function ctx(){
+  if(!actx){actx=new (window.AudioContext||window.webkitAudioContext)();
+    dbg('actx created sampleRate='+actx.sampleRate);
+    gainNode=actx.createGain();gainNode.connect(actx.destination);
+    gainNode.gain.value=document.getElementById('vol').value/100;}
+  if(actx.state==='suspended'){actx.resume();}
+  dbg('ctx state='+actx.state);
+  return actx;}
+async function getBuffer(file){
+  if(bufCache.has(file)){const b=bufCache.get(file);bufCache.delete(file);bufCache.set(file,b);return b;}
+  const urls=(IS_IOS||!canPlayOpus())?[wavFor(file),file]:[file,wavFor(file)];
+  let lastErr=null;
+  for(const url of urls){
+    try{
+      const r=await fetch(url);
+      if(!r.ok)throw new Error('http '+r.status);
+      const ab=await r.arrayBuffer();
+      dbg('fetched '+url+' bytes='+ab.byteLength);
+      let b;try{b=await ctx().decodeAudioData(ab.slice(0));}catch(e){dbg('decode FAILED '+url+' err='+e);lastErr=e;continue;}
+      dbg('decoded '+url+' dur='+b.duration.toFixed(2)+' ch='+b.numberOfChannels);
+      bufCache.set(file,b);
+      while(bufCache.size>8){bufCache.delete(bufCache.keys().next().value);}
+      return b;
+    }catch(e){dbg('getBuffer '+url+' failed '+e);lastErr=e;}
+  }
+  throw lastErr||new Error('no playable format');}
+function stopSource(){if(srcNode){try{srcNode.onended=null;srcNode.stop();}catch(e){}try{srcNode.disconnect();}catch(e){}srcNode=null;}}
+/* Cut the decoded buffer to the exact musical length from loops.json (same as
+   the desktop engine). Decoded files carry codec padding past the true end;
+   looping the raw buffer would repeat that silence as a "gap" every cycle. */
+function trimToDuration(buf,duration){
+  if(!duration||duration<=0)return buf;
+  const sr=buf.sampleRate, target=Math.round(duration*sr);
+  if(target<=0||target>=buf.length)return buf;
+  if(buf.length-target<sr*0.02)return buf; // <20ms: not worth a copy
+  const out=actx.createBuffer(buf.numberOfChannels,target,sr);
+  for(let ch=0;ch<buf.numberOfChannels;ch++){out.copyToChannel(buf.getChannelData(ch).subarray(0,target),ch);}
+  dbg('trimmed '+buf.duration.toFixed(3)+'s -> '+out.duration.toFixed(3)+'s');
+  return out;}
+function paintRange(el){
+  const min=+el.min||0, max=+el.max||100, v=+el.value;
+  const pct=((v-min)/(max-min))*100;
+  el.style.setProperty('--fill',`linear-gradient(90deg,var(--accent) ${pct}%,#3b3452 ${pct}%)`);
+}
+['tempo','vol'].forEach(id=>{const el=document.getElementById(id);paintRange(el);el.addEventListener('input',()=>paintRange(el));});
+function btnRow(el,items,cur,cb){
+  el.innerHTML='';
+  items.forEach(([v,label,cls])=>{
+    const b=document.createElement('button');b.className='fbtn'+(cur===v?' active':'')+(cls?' '+cls:'');b.textContent=label;
+    b.onclick=()=>{cb(v);btnRow(el,items,v,cb);};
+    el.appendChild(b);});}
+fetch('loops.json').then(r=>r.json()).then(d=>{loops=d;
+  const genres=[...new Set(d.flatMap(x=>x.genres||[x.genre]))].sort();
+  btnRow(document.getElementById('gbtns'),[['','All'],...genres.map(g=>[g,g[0].toUpperCase()+g.slice(1)])],fGenre,v=>{fGenre=v;render();});
+  btnRow(document.getElementById('mbtns'),[['','All'],['4/4','4/4'],['3/4','3/4'],['6/8','6/8'],['5/8','5/8'],['7/8','7/8']],fMeter,v=>{fMeter=v;render();});
+  render();});
+function render(){
+  const term=q.value.toLowerCase(), fo=favOnly.classList.contains('active');
+  let list=loops.filter(l=>(!term||l.name.toLowerCase().includes(term))&&(!fGenre||(l.genres||[l.genre]).includes(fGenre))&&(!fMeter||l.timeSignature===fMeter)&&(!fo||favs.has(l.file)));
+  list.sort((a,b)=>a.name.localeCompare(b.name));
+  document.getElementById('count').textContent=list.length+' of '+loops.length+' loops'+(fMeter?' in '+fMeter:'')+(fGenre?' · '+fGenre:'');
+  grid.innerHTML='';
+  if(!list.length){grid.innerHTML='<div class="empty">No loops match — try clearing search or filters.</div>';return;}
+  list.forEach(l=>{
+    const c=document.createElement('div');c.className='card'+(current===l.file?' playing':'');c.tabIndex=0;
+    c.setAttribute('role','button');c.setAttribute('aria-label','Play '+l.name);
+    const playing=current===l.file;
+    c.innerHTML='<div class="top"><div class="thumb">'+(playing?'⏸':'▶')+'</div><div><p class="name"></p><div class="sub"></div></div></div><div class="badges"></div><button class="fav" title="Favorite">★</button>';
+    c.querySelector('.name').textContent=l.name;
+    c.querySelector('.sub').textContent=((l.genres||[l.genre]).join(' · ')||'')+(l.duration?' · '+l.duration+'s':'');
+    const b=c.querySelector('.badges');
+    const sig=document.createElement('span');sig.className='chip sig';sig.textContent=l.timeSignature||'4/4';b.appendChild(sig);
+    if(l.bpm){const bp=document.createElement('span');bp.className='chip bpm';bp.textContent=l.bpm+' BPM';b.appendChild(bp);}
+    const f=c.querySelector('.fav');if(favs.has(l.file))f.classList.add('on');
+    f.onclick=e=>{e.stopPropagation();const on=!favs.has(l.file);
+      on?favs.add(l.file):favs.delete(l.file);
+      f.classList.toggle('on',on);persistFav(l.file,on);
+      if(favOnly.classList.contains('active'))render();};
+    const go=()=>{if(current===l.file){stopPlayback();}else{play(l);}};
+    c.onclick=go;c.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}};
+    grid.appendChild(c);});
+}
+let baseBpm=null;
+function applyTempo(){
+  const tEl=document.getElementById('tempo');
+  const rate=parseInt(tEl.value)/100;
+  paintRange(tEl);
+  if(srcNode){srcNode.playbackRate.value=rate;}
+  if(htmlEl){try{htmlEl.playbackRate=rate;}catch(e){}}
+  document.getElementById('tempoval').textContent=baseBpm?Math.round(baseBpm*rate)+' BPM':Math.round(rate*100)+'%';
+  const eff=document.getElementById('effbpm');
+  if(baseBpm){const eb=Math.round(baseBpm*rate);eff.textContent='♪ '+baseBpm+' BPM → '+eb+' BPM';}
+  else eff.textContent='♪ '+Math.round(rate*100)+'% speed';}
+document.getElementById('tempo').oninput=()=>{applyTempo();
+  if(NATIVE_AUDIO&&current){ninvoke('audio_set_tempo',{tempoPct:parseInt(document.getElementById('tempo').value)});}};
+document.getElementById('temporeset').onclick=()=>{document.getElementById('tempo').value=100;applyTempo();};
+async function playHtml(l,my){
+  engine='html';stopSource();
+  dbg('fallback to <audio> for '+l.file);
+  if(!htmlEl){htmlEl=new Audio();htmlEl.loop=true;htmlEl.preload='auto';
+    htmlEl.onerror=()=>{dbg('html audio ERROR file='+(htmlEl.dataset.f||'?')+' code='+(htmlEl.error&&htmlEl.error.code));};
+    htmlEl.onplaying=()=>{dbg('html audio playing '+(htmlEl.dataset.f||''));};}
+  const urls=(IS_IOS||!canPlayOpus())?[wavFor(l.file),l.file]:[l.file,wavFor(l.file)];
+  let lastErr=null;
+  for(const u of urls){
+    if(my!==playToken)return;
+    try{
+      if(htmlEl.dataset.u){try{URL.revokeObjectURL(htmlEl.dataset.u);}catch(e){}htmlEl.dataset.u='';}
+      htmlEl.dataset.f=l.file;
+      const resp=await fetch(u);
+      if(!resp.ok)throw new Error('http '+resp.status);
+      const raw=await resp.arrayBuffer();
+      dbg('html fetched '+u+' bytes='+raw.byteLength);
+      const mime=u===l.file?'audio/ogg; codecs=opus':'audio/wav';
+      const url=URL.createObjectURL(new Blob([raw],{type:mime}));
+      htmlEl.dataset.u=url;htmlEl.src=url;
+      dbg('html blob url set '+mime);
+      try{htmlEl.preservesPitch=true;}catch(e){}
+      htmlEl.playbackRate=parseInt(document.getElementById('tempo').value)/100;
+      htmlEl.volume=document.getElementById('vol').value/100;
+      await htmlEl.play();
+      if(my!==playToken)return;
+      applyTempo();
+      now.textContent=l.name;syncStopBtn();
+      return;
+    }catch(e){dbg('html '+u+' failed '+e);lastErr=e;}
+  }
+  if(my===playToken){dbg('html fallback threw '+lastErr);now.textContent='Could not play '+l.name+' - try again';}}
+async function playHtmlSafe(l,my){
+  try{await playHtml(l,my);}catch(e){if(my===playToken){dbg('html fallback threw '+e);now.textContent='Could not play '+l.name+' - try again';}}}
+async function play(l){
+  const my=++playToken;
+  if(NATIVE_AUDIO){stopSource();if(htmlEl){try{htmlEl.pause();}catch(e){}}stopMetro();return nativePlay(l,my);}
+  try{ctx();}catch(e){dbg('ctx create threw '+e);}
+  stopSource();if(htmlEl){try{htmlEl.pause();}catch(e){}}stopMetro();
+  current=l.file;currentLoop=l;lastLoop=l;baseBpm=l.bpm||null;
+  now.textContent='LOADING '+l.name+' ...';
+  document.body.classList.add('playing-anim');syncStopBtn();render();
+  dbg('play '+l.file+' engine='+engine);
+  try{
+    let buf=await getBuffer(l.file);
+    if(my!==playToken)return;
+    const ac=ctx();
+    buf=trimToDuration(buf,l.duration);
+    // The unlock call above ran in the tap gesture; resume again now that the
+    // async fetch/decode is done, and wait for it before starting.
+    if(ac.state!=='running'){try{await ac.resume();}catch(e){dbg('resume threw '+e);}}
+    if(my!==playToken)return;
+    if(ac.state!=='running'){dbg('ctx still '+ac.state+', html fallback');playHtmlSafe(l,my);return;}
+    const src=ac.createBufferSource();
+    src.buffer=buf;src.loop=true;
+    src.playbackRate.value=parseInt(document.getElementById('tempo').value)/100;
+    src.connect(gainNode);
+    srcNode=src;src.start();
+    applyTempo();
+    syncStopBtn();
+    dbg('source started state='+ac.state);
+    setTimeout(async()=>{if(my!==playToken)return;
+      if(actx&&actx.state!=='running'){try{await actx.resume();}catch(e){}
+        if(actx.state!=='running'){now.textContent+=' [audio '+actx.state+']';playHtmlSafe(l,my);}}},1200);
+    now.textContent=l.name;
+  }catch(err){
+    if(my!==playToken)return;
+    dbg('web play failed, html fallback err='+err);
+    playHtmlSafe(l,my);}}
+function syncStopBtn(){document.getElementById('stop').textContent=current?'⏹':'▶';}
+function stopPlayback(){playToken++;if(NATIVE_AUDIO){ninvoke('audio_stop');}stopSource();currentLoop=null;if(htmlEl){try{htmlEl.pause();htmlEl.removeAttribute('src');}catch(e){}}current=null;now.textContent=lastLoop?lastLoop.name:'';syncStopBtn();document.body.classList.remove('playing-anim');render();stopMetro();}
+document.getElementById('stop').onclick=e=>{if(e)e.stopPropagation();if(current){stopPlayback();}else if(lastLoop){play(lastLoop);}};
+/* Phone: tap the footer row (play button + name) to expand/collapse tempo + vol. */
+document.getElementById('trackrow').onclick=()=>{
+  const bar=document.getElementById('playerbar');
+  bar.classList.toggle('expanded');
+  document.getElementById('trackrow').setAttribute('aria-expanded',bar.classList.contains('expanded'));};
+syncStopBtn();
+const volEl=document.getElementById('vol');
+volEl.oninput=e=>{if(NATIVE_AUDIO&&current){ninvoke('audio_set_volume',{volume:e.target.value/100});}if(gainNode)gainNode.gain.value=e.target.value/100;if(htmlEl)htmlEl.volume=e.target.value/100;document.getElementById('volval').textContent=e.target.value;paintRange(volEl);};
+[q].forEach(el=>el.oninput=render);
+favOnly.onclick=()=>{favOnly.classList.toggle('active');render();};
+const serverBtn=document.getElementById('serverbtn'), serverUrl=document.getElementById('serverurl');
+if(window.__TAURI__&&window.__TAURI__.core){
+  document.getElementById('serverblock').style.display='';
+  let serverOn=false;
+  serverBtn.onclick=async()=>{
+    try{
+      if(!serverOn){
+        serverBtn.textContent='Starting…';
+        const url=await window.__TAURI__.core.invoke('start_phone_server');
+        serverOn=true;serverBtn.textContent='Stop Server';
+        serverUrl.style.display='';serverUrl.textContent=url;
+        serverBtn.title='Serving at '+url+' — tap to stop';
+      }else{
+        await window.__TAURI__.core.invoke('stop_phone_server');
+        serverOn=false;serverBtn.textContent='Start Server';
+        serverUrl.style.display='none';serverUrl.title='';
+        serverBtn.title='Start LAN server';
+      }
+    }catch(err){serverBtn.textContent='Error';serverBtn.title=String(err);
+      setTimeout(()=>{if(!serverOn)serverBtn.textContent='Start Server';},2500);}
+  };
+}
+document.getElementById('hamburger').onclick=()=>document.body.classList.toggle('sbopen');
+document.getElementById('scrim').onclick=()=>document.body.classList.remove('sbopen');
+try{['pointerdown','keydown','touchend'].forEach(ev=>window.addEventListener(ev,()=>{try{ctx();}catch(e){}},{passive:true}));}catch(e){}
+try{document.addEventListener('gesturestart',e=>e.preventDefault());}catch(e){}
+try{document.addEventListener('dblclick',e=>e.preventDefault(),{passive:false});}catch(e){}
+function click(freq){const ac=ctx();const o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.frequency.value=freq;g.gain.setValueAtTime(.25,ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+.08);o.start();o.stop(ac.currentTime+.09);}
+function stopMetro(){if(metroTimer){clearInterval(metroTimer);metroTimer=null;}}
+</script>
+</body>
+</html>

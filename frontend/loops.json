@@ -1,0 +1,1777 @@
+[
+ {
+  "file": "loops/classic606130.opus",
+  "name": "606 Classic",
+  "genres": [
+   "hiphop",
+   "electro"
+  ],
+  "genre": "hiphop/electro",
+  "timeSignature": "4/4",
+  "bpm": 130,
+  "bpmMin": 100,
+  "bpmMax": 160,
+  "duration": 1.85,
+  "pack": "base"
+ },
+ {
+  "file": "loops/smack60695.opus",
+  "name": "606 Smack",
+  "genres": [
+   "hiphop",
+   "electro"
+  ],
+  "genre": "hiphop/electro",
+  "timeSignature": "4/4",
+  "bpm": 95,
+  "bpmMin": 70,
+  "bpmMax": 125,
+  "duration": 5.05,
+  "pack": "base"
+ },
+ {
+  "file": "loops/classic808100.opus",
+  "name": "808 Classic",
+  "genres": [
+   "hiphop",
+   "electro"
+  ],
+  "genre": "hiphop/electro",
+  "timeSignature": "4/4",
+  "bpm": 100,
+  "bpmMin": 75,
+  "bpmMax": 135,
+  "duration": 4.8,
+  "pack": "base"
+ },
+ {
+  "file": "loops/laidback80880.opus",
+  "name": "808 Laid Back",
+  "genres": [
+   "hiphop",
+   "electro"
+  ],
+  "genre": "hiphop/electro",
+  "timeSignature": "4/4",
+  "bpm": 80,
+  "bpmMin": 55,
+  "bpmMax": 110,
+  "duration": 3.0,
+  "pack": "base"
+ },
+ {
+  "file": "loops/pump808110.opus",
+  "name": "808 Pump",
+  "genres": [
+   "hiphop",
+   "electro"
+  ],
+  "genre": "hiphop/electro",
+  "timeSignature": "4/4",
+  "bpm": 110,
+  "bpmMin": 80,
+  "bpmMax": 145,
+  "duration": 4.36,
+  "pack": "base"
+ },
+ {
+  "file": "loops/psk909100.opus",
+  "name": "909 PSK",
+  "genres": [
+   "hiphop",
+   "electro"
+  ],
+  "genre": "hiphop/electro",
+  "timeSignature": "4/4",
+  "bpm": 100,
+  "bpmMin": 75,
+  "bpmMax": 130,
+  "duration": 4.8,
+  "pack": "base"
+ },
+ {
+  "file": "loops/revolution909128.opus",
+  "name": "909 Revolution",
+  "genres": [
+   "misc",
+   "electro"
+  ],
+  "genre": "misc/electro",
+  "timeSignature": "4/4",
+  "bpm": 128,
+  "bpmMin": 98,
+  "bpmMax": 158,
+  "duration": 1.88,
+  "pack": "base"
+ },
+ {
+  "file": "loops/aceofhearts.opus",
+  "name": "Ace of Spades",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 140,
+  "bpmMin": 110,
+  "bpmMax": 180,
+  "duration": 6.86,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/latin_acoustic_funk.opus",
+  "name": "Acoustic Funk",
+  "genres": [
+   "latin"
+  ],
+  "genre": "latin",
+  "timeSignature": "4/4",
+  "bpm": 90,
+  "bpmMin": 75,
+  "bpmMax": 110,
+  "duration": 10.67,
+  "pack": "latin"
+ },
+ {
+  "file": "loops/latin_acoustic_reggaeton.opus",
+  "name": "Acoustic Reggaeton",
+  "genres": [
+   "latin"
+  ],
+  "genre": "latin",
+  "timeSignature": "4/4",
+  "bpm": 90,
+  "bpmMin": 75,
+  "bpmMax": 110,
+  "duration": 10.67,
+  "pack": "latin"
+ },
+ {
+  "file": "loops/african_vibe.opus",
+  "name": "African Vibe",
+  "genres": [
+   "misc"
+  ],
+  "genre": "misc",
+  "timeSignature": "4/4",
+  "bpm": 80,
+  "bpmMin": 60,
+  "bpmMax": 110,
+  "duration": 6.0,
+  "pack": "base"
+ },
+ {
+  "file": "loops/amen.opus",
+  "name": "Amen, Brother",
+  "genres": [
+   "hiphop",
+   "misc"
+  ],
+  "genre": "hiphop/misc",
+  "timeSignature": "4/4",
+  "bpm": 137,
+  "bpmMin": 70,
+  "bpmMax": 200,
+  "duration": 7.0,
+  "pack": "base"
+ },
+ {
+  "file": "loops/angrymetal.opus",
+  "name": "Angry Metal",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 140,
+  "bpmMin": 110,
+  "bpmMax": 170,
+  "duration": 3.42,
+  "pack": "base"
+ },
+ {
+  "file": "loops/aspirin.opus",
+  "name": "Aspirin",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 103,
+  "bpmMin": 73,
+  "bpmMax": 143,
+  "duration": 4.66,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/latin_bachata_1.opus",
+  "name": "Bachata 1",
+  "genres": [
+   "latin"
+  ],
+  "genre": "latin",
+  "timeSignature": "4/4",
+  "bpm": 120,
+  "bpmMin": 105,
+  "bpmMax": 140,
+  "duration": 16.0,
+  "pack": "latin"
+ },
+ {
+  "file": "loops/latin_bachata_2.opus",
+  "name": "Bachata 2",
+  "genres": [
+   "latin"
+  ],
+  "genre": "latin",
+  "timeSignature": "4/4",
+  "bpm": 120,
+  "bpmMin": 105,
+  "bpmMax": 140,
+  "duration": 16.0,
+  "pack": "latin"
+ },
+ {
+  "file": "loops/latin_bachata_3.opus",
+  "name": "Bachata 3",
+  "genres": [
+   "latin"
+  ],
+  "genre": "latin",
+  "timeSignature": "4/4",
+  "bpm": 120,
+  "bpmMin": 105,
+  "bpmMax": 140,
+  "duration": 8.0,
+  "pack": "latin"
+ },
+ {
+  "file": "loops/basicseven.opus",
+  "name": "Basic Seven",
+  "genres": [
+   "pop",
+   "rock",
+   "indie"
+  ],
+  "genre": "pop/rock/indie",
+  "timeSignature": "7/8",
+  "bpm": 125,
+  "bpmMin": 90,
+  "bpmMax": 160,
+  "duration": 3.36,
+  "pack": "base"
+ },
+ {
+  "file": "loops/basicsix.opus",
+  "name": "Basic Six",
+  "genres": [
+   "pop",
+   "rock",
+   "indie",
+   "blues"
+  ],
+  "genre": "pop/rock/indie/blues",
+  "timeSignature": "6/8",
+  "bpm": 90,
+  "bpmMin": 75,
+  "bpmMax": 120,
+  "duration": 4.0,
+  "pack": "base"
+ },
+ {
+  "file": "loops/basicslowfour.opus",
+  "name": "Basic Slow Four",
+  "genres": [
+   "rock",
+   "pop"
+  ],
+  "genre": "rock/pop",
+  "timeSignature": "4/4",
+  "bpm": 65,
+  "bpmMin": 50,
+  "bpmMax": 85,
+  "duration": 7.38,
+  "pack": "base"
+ },
+ {
+  "file": "loops/blue_shuffle.opus",
+  "name": "Blue Shuffle",
+  "genres": [
+   "blues"
+  ],
+  "genre": "blues",
+  "timeSignature": "4/4",
+  "bpm": 95,
+  "bpmMin": 80,
+  "bpmMax": 115,
+  "duration": 5.05,
+  "pack": "base"
+ },
+ {
+  "file": "loops/latin_bolero_chorus.opus",
+  "name": "Bolero Chorus",
+  "genres": [
+   "latin"
+  ],
+  "genre": "latin",
+  "timeSignature": "4/4",
+  "bpm": 90,
+  "bpmMin": 75,
+  "bpmMax": 115,
+  "duration": 21.33,
+  "pack": "latin"
+ },
+ {
+  "file": "loops/latin_bolero_verse.opus",
+  "name": "Bolero Verse",
+  "genres": [
+   "latin"
+  ],
+  "genre": "latin",
+  "timeSignature": "4/4",
+  "bpm": 90,
+  "bpmMin": 75,
+  "bpmMax": 115,
+  "duration": 21.33,
+  "pack": "latin"
+ },
+ {
+  "file": "loops/bossa.opus",
+  "name": "Bossa",
+  "genres": [
+   "misc"
+  ],
+  "genre": "misc",
+  "timeSignature": "4/4",
+  "bpm": 110,
+  "bpmMin": 85,
+  "bpmMax": 140,
+  "duration": 4.37,
+  "pack": "base"
+ },
+ {
+  "file": "loops/chopdrummey.opus",
+  "name": "Chop Suey!",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 130,
+  "bpmMin": 100,
+  "bpmMax": 170,
+  "duration": 3.69,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/cissygroove.opus",
+  "name": "Cissy Strut",
+  "genres": [
+   "funk",
+   "pop"
+  ],
+  "genre": "funk/pop",
+  "timeSignature": "4/4",
+  "bpm": 85,
+  "bpmMin": 65,
+  "bpmMax": 115,
+  "duration": 2.82,
+  "pack": "base"
+ },
+ {
+  "file": "loops/clapbourine.opus",
+  "name": "Clapbourine",
+  "genres": [
+   "electro"
+  ],
+  "genre": "electro",
+  "timeSignature": "4/4",
+  "bpm": 70,
+  "bpmMin": 55,
+  "bpmMax": 100,
+  "duration": 6.86,
+  "pack": "base"
+ },
+ {
+  "file": "loops/countrytrain.opus",
+  "name": "Country Train",
+  "genres": [
+   "blues",
+   "misc"
+  ],
+  "genre": "blues/misc",
+  "timeSignature": "4/4",
+  "bpm": 100,
+  "bpmMin": 75,
+  "bpmMax": 135,
+  "duration": 4.8,
+  "pack": "base"
+ },
+ {
+  "file": "loops/latin_cumbia_chorus_1.opus",
+  "name": "Cumbia Chorus 1",
+  "genres": [
+   "latin"
+  ],
+  "genre": "latin",
+  "timeSignature": "4/4",
+  "bpm": 90,
+  "bpmMin": 75,
+  "bpmMax": 110,
+  "duration": 10.67,
+  "pack": "latin"
+ },
+ {
+  "file": "loops/latin_cumbia_chorus_2.opus",
+  "name": "Cumbia Chorus 2",
+  "genres": [
+   "latin"
+  ],
+  "genre": "latin",
+  "timeSignature": "4/4",
+  "bpm": 90,
+  "bpmMin": 75,
+  "bpmMax": 110,
+  "duration": 10.67,
+  "pack": "latin"
+ },
+ {
+  "file": "loops/latin_cumbia_verse_1.opus",
+  "name": "Cumbia Verse 1",
+  "genres": [
+   "latin"
+  ],
+  "genre": "latin",
+  "timeSignature": "4/4",
+  "bpm": 90,
+  "bpmMin": 75,
+  "bpmMax": 110,
+  "duration": 10.67,
+  "pack": "latin"
+ },
+ {
+  "file": "loops/latin_cumbia_verse_2.opus",
+  "name": "Cumbia Verse 2",
+  "genres": [
+   "latin"
+  ],
+  "genre": "latin",
+  "timeSignature": "4/4",
+  "bpm": 90,
+  "bpmMin": 75,
+  "bpmMax": 110,
+  "duration": 10.67,
+  "pack": "latin"
+ },
+ {
+  "file": "loops/dimewalk.opus",
+  "name": "Walk",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 116,
+  "bpmMin": 86,
+  "bpmMax": 156,
+  "duration": 8.28,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/dirty_hop.opus",
+  "name": "Dirty Hop",
+  "genres": [
+   "hiphop",
+   "electro"
+  ],
+  "genre": "hiphop/electro",
+  "timeSignature": "4/4",
+  "bpm": 75,
+  "bpmMin": 60,
+  "bpmMax": 100,
+  "duration": 6.4,
+  "pack": "base"
+ },
+ {
+  "file": "loops/vinyl2.opus",
+  "name": "Dirty Vinyl",
+  "genres": [
+   "hiphop",
+   "funk"
+  ],
+  "genre": "hiphop/funk",
+  "timeSignature": "4/4",
+  "bpm": 65,
+  "bpmMin": 50,
+  "bpmMax": 95,
+  "duration": 3.69,
+  "pack": "base"
+ },
+ {
+  "file": "loops/dnb_classic.opus",
+  "name": "DnB Classic",
+  "genres": [
+   "electro"
+  ],
+  "genre": "electro",
+  "timeSignature": "4/4",
+  "bpm": 170,
+  "bpmMin": 130,
+  "bpmMax": 190,
+  "duration": 5.65,
+  "pack": "base"
+ },
+ {
+  "file": "loops/double_bass.opus",
+  "name": "Double Bass",
+  "genres": [
+   "metal"
+  ],
+  "genre": "metal",
+  "timeSignature": "4/4",
+  "bpm": 125,
+  "bpmMin": 105,
+  "bpmMax": 155,
+  "duration": 7.68,
+  "pack": "base"
+ },
+ {
+  "file": "loops/fat_shuffle.opus",
+  "name": "Fat Shuffle Groove",
+  "genres": [
+   "rock"
+  ],
+  "genre": "rock",
+  "timeSignature": "4/4",
+  "bpm": 83,
+  "bpmMin": 68,
+  "bpmMax": 113,
+  "duration": 11.57,
+  "pack": "base"
+ },
+ {
+  "file": "loops/freakysue.opus",
+  "name": "Freaky Sue",
+  "genres": [
+   "jazz",
+   "rock"
+  ],
+  "genre": "jazz/rock",
+  "timeSignature": "4/4",
+  "bpm": 170,
+  "bpmMin": 140,
+  "bpmMax": 210,
+  "duration": 5.65,
+  "pack": "base"
+ },
+ {
+  "file": "loops/freestyle.opus",
+  "name": "Freestyle",
+  "genres": [
+   "hiphop",
+   "funk"
+  ],
+  "genre": "hiphop/funk",
+  "timeSignature": "4/4",
+  "bpm": 95,
+  "bpmMin": 75,
+  "bpmMax": 125,
+  "duration": 2.53,
+  "pack": "base"
+ },
+ {
+  "file": "loops/funky_16th_straight.opus",
+  "name": "Funky 16th Straight",
+  "genres": [
+   "funk",
+   "pop"
+  ],
+  "genre": "funk/pop",
+  "timeSignature": "4/4",
+  "bpm": 95,
+  "bpmMin": 70,
+  "bpmMax": 120,
+  "duration": 5.05,
+  "pack": "base"
+ },
+ {
+  "file": "loops/getgoing.opus",
+  "name": "Get Going",
+  "genres": [
+   "pop",
+   "funk",
+   "rock"
+  ],
+  "genre": "pop/funk/rock",
+  "timeSignature": "4/4",
+  "bpm": 120,
+  "bpmMin": 90,
+  "bpmMax": 150,
+  "duration": 4.0,
+  "pack": "base"
+ },
+ {
+  "file": "loops/going_poppy.opus",
+  "name": "Going Poppy",
+  "genres": [
+   "funk",
+   "pop"
+  ],
+  "genre": "funk/pop",
+  "timeSignature": "4/4",
+  "bpm": 100,
+  "bpmMin": 85,
+  "bpmMax": 120,
+  "duration": 9.6,
+  "pack": "base"
+ },
+ {
+  "file": "loops/vinyl3.opus",
+  "name": "Gramaphone",
+  "genres": [
+   "hiphop",
+   "funk"
+  ],
+  "genre": "hiphop/funk",
+  "timeSignature": "4/4",
+  "bpm": 80,
+  "bpmMin": 60,
+  "bpmMax": 110,
+  "duration": 3.0,
+  "pack": "base"
+ },
+ {
+  "file": "loops/groove_you.opus",
+  "name": "Groove you",
+  "genres": [
+   "rock",
+   "pop"
+  ],
+  "genre": "rock/pop",
+  "timeSignature": "4/4",
+  "bpm": 163,
+  "bpmMin": 123,
+  "bpmMax": 193,
+  "duration": 2.94,
+  "pack": "base"
+ },
+ {
+  "file": "loops/latin_guaguanco.opus",
+  "name": "Guaguanco",
+  "genres": [
+   "latin"
+  ],
+  "genre": "latin",
+  "timeSignature": "4/4",
+  "bpm": 90,
+  "bpmMin": 75,
+  "bpmMax": 110,
+  "duration": 21.33,
+  "pack": "latin"
+ },
+ {
+  "file": "loops/halftimemetal.opus",
+  "name": "Half Time Metal",
+  "genres": [
+   "metal"
+  ],
+  "genre": "metal",
+  "timeSignature": "4/4",
+  "bpm": 145,
+  "bpmMin": 110,
+  "bpmMax": 185,
+  "duration": 6.62,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/happyshuffle.opus",
+  "name": "Happy Shuffle",
+  "genres": [
+   "blues",
+   "jazz"
+  ],
+  "genre": "blues/jazz",
+  "timeSignature": "4/4",
+  "bpm": 155,
+  "bpmMin": 125,
+  "bpmMax": 185,
+  "duration": 6.19,
+  "pack": "base"
+ },
+ {
+  "file": "loops/hyperblast.opus",
+  "name": "Hyperblast",
+  "genres": [
+   "metal"
+  ],
+  "genre": "metal",
+  "timeSignature": "4/4",
+  "bpm": 150,
+  "bpmMin": 120,
+  "bpmMax": 200,
+  "duration": 6.4,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/ichhabe.opus",
+  "name": "Ich Habe",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 125,
+  "bpmMin": 95,
+  "bpmMax": 160,
+  "duration": 7.68,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/intheair96.opus",
+  "name": "In the Air Tonight",
+  "genres": [
+   "rock",
+   "pop"
+  ],
+  "genre": "rock/pop",
+  "timeSignature": "4/4",
+  "bpm": 96,
+  "bpmMin": 71,
+  "bpmMax": 126,
+  "duration": 10.0,
+  "pack": "base"
+ },
+ {
+  "file": "loops/in_the_hood.opus",
+  "name": "In the Hood",
+  "genres": [
+   "hiphop"
+  ],
+  "genre": "hiphop",
+  "timeSignature": "4/4",
+  "bpm": 85,
+  "bpmMin": 70,
+  "bpmMax": 105,
+  "duration": 5.65,
+  "pack": "base"
+ },
+ {
+  "file": "loops/ironmen.opus",
+  "name": "Iron Man",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 110,
+  "bpmMin": 80,
+  "bpmMax": 150,
+  "duration": 6.19,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/jazz_beat.opus",
+  "name": "Jazz Beat",
+  "genres": [
+   "jazz"
+  ],
+  "genre": "jazz",
+  "timeSignature": "4/4",
+  "bpm": 150,
+  "bpmMin": 125,
+  "bpmMax": 180,
+  "duration": 6.4,
+  "pack": "base"
+ },
+ {
+  "file": "loops/jazzeven.opus",
+  "name": "Jazzeven",
+  "genres": [
+   "jazz"
+  ],
+  "genre": "jazz",
+  "timeSignature": "7/8",
+  "bpm": 100,
+  "bpmMin": 70,
+  "bpmMax": 130,
+  "duration": 4.2,
+  "pack": "base"
+ },
+ {
+  "file": "loops/jazzyambitions.opus",
+  "name": "Jazzy Ambitions",
+  "genres": [
+   "jazz"
+  ],
+  "genre": "jazz",
+  "timeSignature": "4/4",
+  "bpm": 170,
+  "bpmMin": 130,
+  "bpmMax": 200,
+  "duration": 5.65,
+  "pack": "base"
+ },
+ {
+  "file": "loops/jungle_dance.opus",
+  "name": "Jungle Dance",
+  "genres": [
+   "misc"
+  ],
+  "genre": "misc",
+  "timeSignature": "4/4",
+  "bpm": 70,
+  "bpmMin": 50,
+  "bpmMax": 90,
+  "duration": 6.86,
+  "pack": "base"
+ },
+ {
+  "file": "loops/latin.opus",
+  "name": "Latin",
+  "genres": [
+   "jazz"
+  ],
+  "genre": "jazz",
+  "timeSignature": "4/4",
+  "bpm": 90,
+  "bpmMin": 70,
+  "bpmMax": 120,
+  "duration": 2.67,
+  "pack": "base"
+ },
+ {
+  "file": "loops/levee_breaks.opus",
+  "name": "When the Levee Breaks",
+  "genres": [
+   "rock"
+  ],
+  "genre": "rock",
+  "timeSignature": "4/4",
+  "bpm": 78,
+  "bpmMin": 63,
+  "bpmMax": 108,
+  "duration": 7.06,
+  "pack": "base"
+ },
+ {
+  "file": "loops/latin_merengue.opus",
+  "name": "Merengue",
+  "genres": [
+   "latin"
+  ],
+  "genre": "latin",
+  "timeSignature": "4/4",
+  "bpm": 120,
+  "bpmMin": 105,
+  "bpmMax": 140,
+  "duration": 16.0,
+  "pack": "latin"
+ },
+ {
+  "file": "loops/metalblast.opus",
+  "name": "Metal Blast",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 150,
+  "bpmMin": 120,
+  "bpmMax": 180,
+  "duration": 6.4,
+  "pack": "base"
+ },
+ {
+  "file": "loops/metalpreview.opus",
+  "name": "Metal Preview",
+  "genres": [
+   "metal"
+  ],
+  "genre": "metal",
+  "timeSignature": "4/4",
+  "bpm": null,
+  "bpmMin": null,
+  "bpmMax": null,
+  "duration": null,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/metalride.opus",
+  "name": "Metal Ride",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 115,
+  "bpmMin": 90,
+  "bpmMax": 145,
+  "duration": 4.17,
+  "pack": "base"
+ },
+ {
+  "file": "loops/metalhead.opus",
+  "name": "Metalhead",
+  "genres": [
+   "metal"
+  ],
+  "genre": "metal",
+  "timeSignature": "4/4",
+  "bpm": 150,
+  "bpmMin": 110,
+  "bpmMax": 190,
+  "duration": 6.4,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/mowthetown.opus",
+  "name": "Mow the Town",
+  "genres": [
+   "jazz",
+   "misc"
+  ],
+  "genre": "jazz/misc",
+  "timeSignature": "4/4",
+  "bpm": 120,
+  "bpmMin": 95,
+  "bpmMax": 150,
+  "duration": 4.0,
+  "pack": "base"
+ },
+ {
+  "file": "loops/no_8th.opus",
+  "name": "No 8th",
+  "genres": [
+   "rock",
+   "pop"
+  ],
+  "genre": "rock/pop",
+  "timeSignature": "7/8",
+  "bpm": 90,
+  "bpmMin": 70,
+  "bpmMax": 120,
+  "duration": 4.67,
+  "pack": "base"
+ },
+ {
+  "file": "loops/offbeathat.opus",
+  "name": "Off Beat Hat",
+  "genres": [
+   "pop",
+   "funk",
+   "rock"
+  ],
+  "genre": "pop/funk/rock",
+  "timeSignature": "4/4",
+  "bpm": 140,
+  "bpmMin": 115,
+  "bpmMax": 180,
+  "duration": 3.43,
+  "pack": "base"
+ },
+ {
+  "file": "loops/vinyl1.opus",
+  "name": "Old Record",
+  "genres": [
+   "hiphop",
+   "funk"
+  ],
+  "genre": "hiphop/funk",
+  "timeSignature": "4/4",
+  "bpm": 65,
+  "bpmMin": 50,
+  "bpmMax": 95,
+  "duration": 3.69,
+  "pack": "base"
+ },
+ {
+  "file": "loops/oneswingthree.opus",
+  "name": "One Swing Three",
+  "genres": [
+   "blues",
+   "jazz"
+  ],
+  "genre": "blues/jazz",
+  "timeSignature": "3/4",
+  "bpm": 115,
+  "bpmMin": 85,
+  "bpmMax": 145,
+  "duration": 3.13,
+  "pack": "base"
+ },
+ {
+  "file": "loops/one_to_five.opus",
+  "name": "One to Five",
+  "genres": [
+   "rock",
+   "pop"
+  ],
+  "genre": "rock/pop",
+  "timeSignature": "5/8",
+  "bpm": 90,
+  "bpmMin": 70,
+  "bpmMax": 120,
+  "duration": 3.33,
+  "pack": "base"
+ },
+ {
+  "file": "loops/percbeat.opus",
+  "name": "Perc Beat",
+  "genres": [
+   "pop",
+   "funk",
+   "hiphop"
+  ],
+  "genre": "pop/funk/hiphop",
+  "timeSignature": "4/4",
+  "bpm": 85,
+  "bpmMin": 65,
+  "bpmMax": 110,
+  "duration": 5.65,
+  "pack": "base"
+ },
+ {
+  "file": "loops/psychedelic.opus",
+  "name": "Psychedelic",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 135,
+  "bpmMin": 105,
+  "bpmMax": 175,
+  "duration": 7.11,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/pumpinsix.opus",
+  "name": "Pumpin' Six",
+  "genres": [
+   "rock",
+   "blues",
+   "pop"
+  ],
+  "genre": "rock/blues/pop",
+  "timeSignature": "6/8",
+  "bpm": 135,
+  "bpmMin": 110,
+  "bpmMax": 160,
+  "duration": 5.33,
+  "pack": "base"
+ },
+ {
+  "file": "loops/punk.opus",
+  "name": "Punk",
+  "genres": [
+   "rock",
+   "pop",
+   "misc"
+  ],
+  "genre": "rock/pop/misc",
+  "timeSignature": "4/4",
+  "bpm": 200,
+  "bpmMin": 165,
+  "bpmMax": 240,
+  "duration": 4.8,
+  "pack": "base"
+ },
+ {
+  "file": "loops/pushin_it_16th.opus",
+  "name": "Pushin' it",
+  "genres": [
+   "rock",
+   "pop",
+   "funk"
+  ],
+  "genre": "rock/pop/funk",
+  "timeSignature": "4/4",
+  "bpm": 105,
+  "bpmMin": 85,
+  "bpmMax": 130,
+  "duration": 4.57,
+  "pack": "base"
+ },
+ {
+  "file": "loops/rainingwhine.opus",
+  "name": "Raining Whine",
+  "genres": [
+   "metal"
+  ],
+  "genre": "metal",
+  "timeSignature": "4/4",
+  "bpm": 180,
+  "bpmMin": 140,
+  "bpmMax": 230,
+  "duration": 5.33,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/reggae.opus",
+  "name": "Reggae",
+  "genres": [
+   "pop",
+   "misc"
+  ],
+  "genre": "pop/misc",
+  "timeSignature": "4/4",
+  "bpm": 75,
+  "bpmMin": 60,
+  "bpmMax": 110,
+  "duration": 6.4,
+  "pack": "base"
+ },
+ {
+  "file": "loops/reversedblast.opus",
+  "name": "Reversed Blast",
+  "genres": [
+   "metal"
+  ],
+  "genre": "metal",
+  "timeSignature": "4/4",
+  "bpm": 160,
+  "bpmMin": 130,
+  "bpmMax": 200,
+  "duration": 6.0,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/riderim.opus",
+  "name": "Ride Rim",
+  "genres": [
+   "pop",
+   "rock"
+  ],
+  "genre": "pop/rock",
+  "timeSignature": "4/4",
+  "bpm": 70,
+  "bpmMin": 55,
+  "bpmMax": 100,
+  "duration": 6.86,
+  "pack": "base"
+ },
+ {
+  "file": "loops/ridestick.opus",
+  "name": "Ride Stick",
+  "genres": [
+   "pop",
+   "indie",
+   "rock"
+  ],
+  "genre": "pop/indie/rock",
+  "timeSignature": "4/4",
+  "bpm": 100,
+  "bpmMin": 75,
+  "bpmMax": 130,
+  "duration": 4.8,
+  "pack": "base"
+ },
+ {
+  "file": "loops/ride_the_shuffle.opus",
+  "name": "Ride the Shuffle",
+  "genres": [
+   "blues",
+   "pop"
+  ],
+  "genre": "blues/pop",
+  "timeSignature": "6/8",
+  "bpm": 78,
+  "bpmMin": 58,
+  "bpmMax": 98,
+  "duration": 9.23,
+  "pack": "base"
+ },
+ {
+  "file": "loops/rocknroll.opus",
+  "name": "Rock 'n' Roll",
+  "genres": [
+   "rock",
+   "blues",
+   "pop"
+  ],
+  "genre": "rock/blues/pop",
+  "timeSignature": "4/4",
+  "bpm": 160,
+  "bpmMin": 130,
+  "bpmMax": 190,
+  "duration": 6.0,
+  "pack": "base"
+ },
+ {
+  "file": "loops/rollingblues.opus",
+  "name": "Rolling Blues",
+  "genres": [
+   "blues"
+  ],
+  "genre": "blues",
+  "timeSignature": "4/4",
+  "bpm": 130,
+  "bpmMin": 100,
+  "bpmMax": 160,
+  "duration": 7.38,
+  "pack": "base"
+ },
+ {
+  "file": "loops/roomy_steady_groove.opus",
+  "name": "Roomy Steady Groove",
+  "genres": [
+   "rock",
+   "pop"
+  ],
+  "genre": "rock/pop",
+  "timeSignature": "4/4",
+  "bpm": 80,
+  "bpmMin": 65,
+  "bpmMax": 105,
+  "duration": 6.4,
+  "pack": "base"
+ },
+ {
+  "file": "loops/roshuffle.opus",
+  "name": "Roshuffle",
+  "genres": [
+   "pop",
+   "rock",
+   "funk"
+  ],
+  "genre": "pop/rock/funk",
+  "timeSignature": "4/4",
+  "bpm": 87,
+  "bpmMin": 67,
+  "bpmMax": 117,
+  "duration": 5.52,
+  "pack": "base"
+ },
+ {
+  "file": "loops/run121.opus",
+  "name": "Run to the Hills",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 121,
+  "bpmMin": 91,
+  "bpmMax": 156,
+  "duration": 1.98,
+  "pack": "base"
+ },
+ {
+  "file": "loops/salsa.opus",
+  "name": "Salsa",
+  "genres": [
+   "misc"
+  ],
+  "genre": "misc",
+  "timeSignature": "4/4",
+  "bpm": 150,
+  "bpmMin": 110,
+  "bpmMax": 190,
+  "duration": 3.2,
+  "pack": "base"
+ },
+ {
+  "file": "loops/latin_salsa_chorus_23.opus",
+  "name": "Salsa Chorus 23",
+  "genres": [
+   "latin"
+  ],
+  "genre": "latin",
+  "timeSignature": "4/4",
+  "bpm": 120,
+  "bpmMin": 100,
+  "bpmMax": 140,
+  "duration": 16.0,
+  "pack": "latin"
+ },
+ {
+  "file": "loops/latin_salsa_chorus_32.opus",
+  "name": "Salsa Chorus 32",
+  "genres": [
+   "latin"
+  ],
+  "genre": "latin",
+  "timeSignature": "4/4",
+  "bpm": 120,
+  "bpmMin": 100,
+  "bpmMax": 140,
+  "duration": 16.0,
+  "pack": "latin"
+ },
+ {
+  "file": "loops/latin_salsa_verse_23.opus",
+  "name": "Salsa Verse 23",
+  "genres": [
+   "latin"
+  ],
+  "genre": "latin",
+  "timeSignature": "4/4",
+  "bpm": 120,
+  "bpmMin": 100,
+  "bpmMax": 140,
+  "duration": 16.0,
+  "pack": "latin"
+ },
+ {
+  "file": "loops/latin_salsa_verse_32.opus",
+  "name": "Salsa Verse 32",
+  "genres": [
+   "latin"
+  ],
+  "genre": "latin",
+  "timeSignature": "4/4",
+  "bpm": 120,
+  "bpmMin": 100,
+  "bpmMax": 140,
+  "duration": 16.0,
+  "pack": "latin"
+ },
+ {
+  "file": "loops/salty90.opus",
+  "name": "Salty",
+  "genres": [
+   "hiphop",
+   "electro"
+  ],
+  "genre": "hiphop/electro",
+  "timeSignature": "4/4",
+  "bpm": 90,
+  "bpmMin": 70,
+  "bpmMax": 120,
+  "duration": 5.33,
+  "pack": "base"
+ },
+ {
+  "file": "loops/sandmangroove.opus",
+  "name": "Enter Sandman",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 123,
+  "bpmMin": 93,
+  "bpmMax": 153,
+  "duration": 3.9,
+  "pack": "base"
+ },
+ {
+  "file": "loops/shakeit.opus",
+  "name": "Shake it",
+  "genres": [
+   "electro",
+   "pop",
+   "hiphop"
+  ],
+  "genre": "electro/pop/hiphop",
+  "timeSignature": "4/4",
+  "bpm": 90,
+  "bpmMin": 70,
+  "bpmMax": 120,
+  "duration": 5.33,
+  "pack": "base"
+ },
+ {
+  "file": "loops/shaker110.opus",
+  "name": "Shaker 110",
+  "genres": [
+   "pop",
+   "misc"
+  ],
+  "genre": "pop/misc",
+  "timeSignature": "4/4",
+  "bpm": 110,
+  "bpmMin": 85,
+  "bpmMax": 140,
+  "duration": 2.18,
+  "pack": "base"
+ },
+ {
+  "file": "loops/shaker140.opus",
+  "name": "Shaker 140",
+  "genres": [
+   "pop",
+   "misc"
+  ],
+  "genre": "pop/misc",
+  "timeSignature": "4/4",
+  "bpm": 140,
+  "bpmMin": 110,
+  "bpmMax": 185,
+  "duration": 1.71,
+  "pack": "base"
+ },
+ {
+  "file": "loops/shaker70.opus",
+  "name": "Shaker 70",
+  "genres": [
+   "pop",
+   "misc"
+  ],
+  "genre": "pop/misc",
+  "timeSignature": "4/4",
+  "bpm": 70,
+  "bpmMin": 50,
+  "bpmMax": 95,
+  "duration": 3.43,
+  "pack": "base"
+ },
+ {
+  "file": "loops/shaker90.opus",
+  "name": "Shaker 90",
+  "genres": [
+   "pop",
+   "misc"
+  ],
+  "genre": "pop/misc",
+  "timeSignature": "4/4",
+  "bpm": 90,
+  "bpmMin": 70,
+  "bpmMax": 120,
+  "duration": 2.67,
+  "pack": "base"
+ },
+ {
+  "file": "loops/shuffle16th.opus",
+  "name": "Shuffle 16th",
+  "genres": [
+   "pop",
+   "rock",
+   "funk"
+  ],
+  "genre": "pop/rock/funk",
+  "timeSignature": "4/4",
+  "bpm": 90,
+  "bpmMin": 75,
+  "bpmMax": 120,
+  "duration": 5.05,
+  "pack": "base"
+ },
+ {
+  "file": "loops/sixghosts.opus",
+  "name": "Six Ghosts",
+  "genres": [
+   "pop",
+   "rock",
+   "indie"
+  ],
+  "genre": "pop/rock/indie",
+  "timeSignature": "6/8",
+  "bpm": 110,
+  "bpmMin": 80,
+  "bpmMax": 140,
+  "duration": 3.27,
+  "pack": "base"
+ },
+ {
+  "file": "loops/slow.opus",
+  "name": "Slow Metal",
+  "genres": [
+   "metal"
+  ],
+  "genre": "metal",
+  "timeSignature": "4/4",
+  "bpm": 80,
+  "bpmMin": 55,
+  "bpmMax": 120,
+  "duration": 6.0,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/slow_six.opus",
+  "name": "Slow Six",
+  "genres": [
+   "blues",
+   "pop"
+  ],
+  "genre": "blues/pop",
+  "timeSignature": "6/8",
+  "bpm": 55,
+  "bpmMin": 40,
+  "bpmMax": 80,
+  "duration": 13.09,
+  "pack": "base"
+ },
+ {
+  "file": "loops/smellslike.opus",
+  "name": "Smells Like Teen Spirit",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 118,
+  "bpmMin": 88,
+  "bpmMax": 148,
+  "duration": 4.07,
+  "pack": "base"
+ },
+ {
+  "file": "loops/steadydouble.opus",
+  "name": "Steady Double",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 90,
+  "bpmMin": 60,
+  "bpmMax": 130,
+  "duration": 5.33,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/superblast.opus",
+  "name": "Superblast",
+  "genres": [
+   "metal"
+  ],
+  "genre": "metal",
+  "timeSignature": "4/4",
+  "bpm": 140,
+  "bpmMin": 100,
+  "bpmMax": 190,
+  "duration": 3.43,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/sweatingshells.opus",
+  "name": "Sweating Shells",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 77,
+  "bpmMin": 52,
+  "bpmMax": 107,
+  "duration": 12.47,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/techno_straight.opus",
+  "name": "Techno Straight",
+  "genres": [
+   "electro"
+  ],
+  "genre": "electro",
+  "timeSignature": "4/4",
+  "bpm": 120,
+  "bpmMin": 100,
+  "bpmMax": 150,
+  "duration": 4.0,
+  "pack": "base"
+ },
+ {
+  "file": "loops/gallop.opus",
+  "name": "The Gallop",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 120,
+  "bpmMin": 90,
+  "bpmMax": 160,
+  "duration": 4.0,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/three_four.opus",
+  "name": "Three Four",
+  "genres": [
+   "pop",
+   "rock"
+  ],
+  "genre": "pop/rock",
+  "timeSignature": "3/4",
+  "bpm": 130,
+  "bpmMin": 100,
+  "bpmMax": 160,
+  "duration": 2.77,
+  "pack": "base"
+ },
+ {
+  "file": "loops/tripleghosts.opus",
+  "name": "Triple Ghosts",
+  "genres": [
+   "pop",
+   "rock",
+   "indie"
+  ],
+  "genre": "pop/rock/indie",
+  "timeSignature": "3/4",
+  "bpm": 150,
+  "bpmMin": 115,
+  "bpmMax": 180,
+  "duration": 2.4,
+  "pack": "base"
+ },
+ {
+  "file": "loops/tripletmetal.opus",
+  "name": "Triplet Metal",
+  "genres": [
+   "metal"
+  ],
+  "genre": "metal",
+  "timeSignature": "4/4",
+  "bpm": 165,
+  "bpmMin": 125,
+  "bpmMax": 200,
+  "duration": 5.82,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/tripletrock.opus",
+  "name": "Triplet Rock",
+  "genres": [
+   "rock",
+   "metal"
+  ],
+  "genre": "rock/metal",
+  "timeSignature": "4/4",
+  "bpm": 145,
+  "bpmMin": 115,
+  "bpmMax": 175,
+  "duration": 3.31,
+  "pack": "base"
+ },
+ {
+  "file": "loops/two.opus",
+  "name": "Two",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 110,
+  "bpmMin": 80,
+  "bpmMax": 150,
+  "duration": 8.73,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/two_four_the_church.opus",
+  "name": "Two Four the Church",
+  "genres": [
+   "rock",
+   "pop"
+  ],
+  "genre": "rock/pop",
+  "timeSignature": "4/4",
+  "bpm": 90,
+  "bpmMin": 75,
+  "bpmMax": 120,
+  "duration": 10.67,
+  "pack": "base"
+ },
+ {
+  "file": "loops/twoplusthree.opus",
+  "name": "Two Plus Three",
+  "genres": [
+   "pop",
+   "rock",
+   "indie"
+  ],
+  "genre": "pop/rock/indie",
+  "timeSignature": "5/8",
+  "bpm": 150,
+  "bpmMin": 120,
+  "bpmMax": 180,
+  "duration": 4.0,
+  "pack": "base"
+ },
+ {
+  "file": "loops/vinyl_groove.opus",
+  "name": "Vinyl Groove",
+  "genres": [
+   "electro",
+   "hiphop"
+  ],
+  "genre": "electro/hiphop",
+  "timeSignature": "4/4",
+  "bpm": 85,
+  "bpmMin": 70,
+  "bpmMax": 105,
+  "duration": 5.65,
+  "pack": "base"
+ },
+ {
+  "file": "loops/wonderfulpeople.opus",
+  "name": "Wonderful People",
+  "genres": [
+   "metal",
+   "rock"
+  ],
+  "genre": "metal/rock",
+  "timeSignature": "4/4",
+  "bpm": 144,
+  "bpmMin": 114,
+  "bpmMax": 184,
+  "duration": 6.67,
+  "pack": "metal"
+ },
+ {
+  "file": "loops/wonderingwall88.opus",
+  "name": "Wonderwall",
+  "genres": [
+   "rock",
+   "pop",
+   "funk"
+  ],
+  "genre": "rock/pop/funk",
+  "timeSignature": "4/4",
+  "bpm": 88,
+  "bpmMin": 61,
+  "bpmMax": 113,
+  "duration": 5.45,
+  "pack": "base"
+ },
+ {
+  "file": "loops/work_it.opus",
+  "name": "Work it",
+  "genres": [
+   "pop",
+   "indie"
+  ],
+  "genre": "pop/indie",
+  "timeSignature": "4/4",
+  "bpm": 130,
+  "bpmMin": 100,
+  "bpmMax": 155,
+  "duration": 3.69,
+  "pack": "base"
+ },
+ {
+  "file": "loops/youth.opus",
+  "name": "Youth of the Nation",
+  "genres": [
+   "rock",
+   "pop"
+  ],
+  "genre": "rock/pop",
+  "timeSignature": "4/4",
+  "bpm": 98,
+  "bpmMin": 73,
+  "bpmMax": 128,
+  "duration": 4.9,
+  "pack": "base"
+ }
+]

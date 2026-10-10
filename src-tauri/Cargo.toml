@@ -1,0 +1,25 @@
+[package]
+name = "loopz"
+version = "1.0.0"
+description = "Loopz Drum Loops for Linux"
+authors = ["Abhishek"]
+edition = "2021"
+rust-version = "1.77"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "sync", "time"] }
+axum = "0.7"
+mime_guess = "2"
+include_dir = "0.7"
+local-ip-address = "0.6"
+rodio = "0.20"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]

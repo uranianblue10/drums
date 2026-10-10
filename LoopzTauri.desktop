@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Loopz
+Comment=120 gapless drum loops, standalone app (Tauri)
+Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 /home/abhi/Projects/Loopz/loopz-linux/src-tauri/target/release/loopz
+Path=/home/abhi/Projects/Loopz/loopz-linux
+Icon=/home/abhi/Projects/Loopz/loopz-linux/src-tauri/icons/icon.png
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;
+StartupWMClass=loopz
