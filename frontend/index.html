@@ -216,6 +216,7 @@ loadFavs();
 async function nativePlay(l,my){
   current=l.file;currentLoop=l;lastLoop=l;baseBpm=l.bpm||null;
   now.textContent='LOADING '+l.name+' ...';document.body.classList.add('playing-anim');syncStopBtn();render();
+  keepAwake(true);
   try{
     await ninvoke('audio_play',{file:l.file,
       tempoPct:parseInt(document.getElementById('tempo').value),
@@ -347,6 +348,7 @@ async function playIos(l,my){
   current=l.file;currentLoop=l;lastLoop=l;baseBpm=l.bpm||null;
   now.textContent='LOADING '+l.name+' ...';
   document.body.classList.add('playing-anim');syncStopBtn();render();
+  keepAwake(true);
   try{
     const raw=await getBuffer(mp3For(l.file));
     if(my!==playToken)return;
@@ -430,6 +432,22 @@ async function playHtml(l,my){
     }catch(e){dbg('html '+u+' failed '+e);lastErr=e;}
   }
   if(my===playToken){dbg('html fallback threw '+lastErr);now.textContent='Could not play '+l.name+' - try again';}}
+/* Keep the screen on while playing via the Wake Lock API (iOS 16.4+ and all
+   modern browsers). Re-requested when the tab becomes visible again. */
+let wakeLock=null, wantLock=false;
+async function keepAwake(on){
+  if(!('wakeLock' in navigator&&navigator.wakeLock&&navigator.wakeLock.request)){dbg('no wakeLock API (needs HTTPS or localhost)');return;}
+  if(on){
+    wantLock=true;
+    try{
+      wakeLock=await navigator.wakeLock.request('screen');
+      dbg('wake lock on');
+      if(wakeLock&&wakeLock.addEventListener)wakeLock.addEventListener('release',()=>{dbg('wake lock released');if(wantLock&&current){dbg('re-lock');keepAwake(true);}});
+    }
+    catch(e){dbg('wake lock failed '+e);}
+  }else{wantLock=false;if(wakeLock){try{await wakeLock.release();}catch(e){}wakeLock=null;}}
+}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&current){dbg('visible again, re-lock');keepAwake(true);}});
 async function playHtmlSafe(l,my){
   try{await playHtml(l,my);}catch(e){if(my===playToken){dbg('html fallback threw '+e);now.textContent='Could not play '+l.name+' - try again';}}}
 async function play(l){
@@ -440,6 +458,7 @@ async function play(l){
   current=l.file;currentLoop=l;lastLoop=l;baseBpm=l.bpm||null;
   now.textContent='LOADING '+l.name+' ...';
   document.body.classList.add('playing-anim');syncStopBtn();render();
+  keepAwake(true);
   dbg('play '+l.file+' engine='+engine);
   if(IS_IOS||FORCE_IOS){playIos(l,my);return;}
   try{
@@ -469,7 +488,7 @@ async function play(l){
     dbg('web play failed, html fallback err='+err);
     playHtmlSafe(l,my);}}
 function syncStopBtn(){document.getElementById('stop').textContent=current?'⏹':'▶';}
-function stopPlayback(){playToken++;if(NATIVE_AUDIO){ninvoke('audio_stop');}stopSource();currentLoop=null;if(htmlEl){try{htmlEl.pause();htmlEl.removeAttribute('src');}catch(e){}}current=null;now.textContent=lastLoop?lastLoop.name:'';syncStopBtn();document.body.classList.remove('playing-anim');render();stopMetro();}
+function stopPlayback(){playToken++;keepAwake(false);if(NATIVE_AUDIO){ninvoke('audio_stop');}stopSource();currentLoop=null;if(htmlEl){try{htmlEl.pause();htmlEl.removeAttribute('src');}catch(e){}}current=null;now.textContent=lastLoop?lastLoop.name:'';syncStopBtn();document.body.classList.remove('playing-anim');render();stopMetro();}
 document.getElementById('stop').onclick=e=>{if(e)e.stopPropagation();if(current){stopPlayback();}else if(lastLoop){play(lastLoop);}};
 /* Phone: tap the footer row (play button + name) to expand/collapse tempo + vol. */
 document.getElementById('trackrow').onclick=()=>{
