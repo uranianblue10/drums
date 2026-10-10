@@ -204,11 +204,11 @@ let fGenre='', fMeter='';
 const favOnly=document.getElementById('favonly');
 let current=null, currentLoop=null, lastLoop=null, metroTimer=null;
 function dbg(m){try{console.log('[loopz] '+m);}catch(e){}try{if(window.__TAURI__&&window.__TAURI__.core){window.__TAURI__.core.invoke('debug_log',{msg:String(m)});}}catch(e){}}
-/* iOS Safari decodes neither Ogg Opus (Web Audio) nor <audio> opus: the LAN
-   server transcoded WAV at wav/<file> is the fallback (and first choice). */
+/* iOS Safari decodes neither Ogg Opus (Web Audio) nor <audio> opus: the
+   pre-transcoded MP3 at mp3/<file> is the fallback (and first choice). */
 const IS_IOS=/iPad|iPhone|iPod/.test(navigator.userAgent||'')||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 function canPlayOpus(){try{const a=document.createElement('audio');const v=a.canPlayType('audio/ogg; codecs=opus');return v==='probably'||v==='maybe';}catch(e){return false;}}
-function wavFor(file){return 'wav/'+file;}
+function mp3For(file){return file.replace(/^loops\//,'mp3/loops/').replace(/\.opus$/,'.mp3');}
 const NATIVE_AUDIO=!!(window.__TAURI__&&window.__TAURI__.core);
 function ninvoke(cmd,args){return window.__TAURI__.core.invoke(cmd,args||{}).catch(e=>{dbg('invoke '+cmd+' failed '+e);throw e;});}
 loadFavs();
@@ -244,7 +244,7 @@ function ctx(){
   return actx;}
 async function getBuffer(file){
   if(bufCache.has(file)){const b=bufCache.get(file);bufCache.delete(file);bufCache.set(file,b);return b;}
-  const urls=(IS_IOS||!canPlayOpus())?[wavFor(file),file]:[file,wavFor(file)];
+  const urls=(IS_IOS||!canPlayOpus())?[mp3For(file),file]:[file,mp3For(file)];
   let lastErr=null;
   for(const url of urls){
     try{
@@ -336,7 +336,7 @@ async function playHtml(l,my){
   if(!htmlEl){htmlEl=new Audio();htmlEl.loop=true;htmlEl.preload='auto';
     htmlEl.onerror=()=>{dbg('html audio ERROR file='+(htmlEl.dataset.f||'?')+' code='+(htmlEl.error&&htmlEl.error.code));};
     htmlEl.onplaying=()=>{dbg('html audio playing '+(htmlEl.dataset.f||''));};}
-  const urls=(IS_IOS||!canPlayOpus())?[wavFor(l.file),l.file]:[l.file,wavFor(l.file)];
+  const urls=(IS_IOS||!canPlayOpus())?[mp3For(l.file),l.file]:[l.file,mp3For(l.file)];
   let lastErr=null;
   for(const u of urls){
     if(my!==playToken)return;
@@ -347,7 +347,7 @@ async function playHtml(l,my){
       if(!resp.ok)throw new Error('http '+resp.status);
       const raw=await resp.arrayBuffer();
       dbg('html fetched '+u+' bytes='+raw.byteLength);
-      const mime=u===l.file?'audio/ogg; codecs=opus':'audio/wav';
+      const mime=u===l.file?'audio/ogg; codecs=opus':'audio/mpeg';
       const url=URL.createObjectURL(new Blob([raw],{type:mime}));
       htmlEl.dataset.u=url;htmlEl.src=url;
       dbg('html blob url set '+mime);
