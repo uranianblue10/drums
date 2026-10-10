@@ -353,7 +353,16 @@ async function playIos(l,my){
     const raw=await getBuffer(mp3For(l.file));
     if(my!==playToken)return;
     const ac=ctx();
-    if(ac.state!=='running'){dbg('ios ctx '+ac.state+', direct fallback');playIosDirect(l,my);return;}
+    /* Resume races decode: wait up to ~2s for a running context instead of
+       falling back to the gappy <audio> path on the first check. */
+    let tries=0;
+    while(ac.state!=='running'&&tries<20){
+      try{await ac.resume();}catch(e){dbg('ios resume threw '+e);}
+      if(ac.state==='running')break;
+      await new Promise(r=>setTimeout(r,100));tries++;
+    }
+    if(my!==playToken)return;
+    if(ac.state!=='running'){dbg('ios ctx '+ac.state+' after wait, direct fallback');playIosDirect(l,my);return;}
     const buf=trimLoop(raw,l.duration);
     const src=ac.createBufferSource();
     src.buffer=buf;src.loop=true;
@@ -447,7 +456,7 @@ async function keepAwake(on){
     catch(e){dbg('wake lock failed '+e);}
   }else{wantLock=false;if(wakeLock){try{await wakeLock.release();}catch(e){}wakeLock=null;}}
 }
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&current){dbg('visible again, re-lock');keepAwake(true);}});
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&current){dbg('visible again, re-lock');keepAwake(true);if(typeof actx!=='undefined'&&actx&&actx.state!=='running'&&srcNode){dbg('resume audio after hide');actx.resume().catch(()=>{});}}});
 async function playHtmlSafe(l,my){
   try{await playHtml(l,my);}catch(e){if(my===playToken){dbg('html fallback threw '+e);now.textContent='Could not play '+l.name+' - try again';}}}
 async function play(l){
